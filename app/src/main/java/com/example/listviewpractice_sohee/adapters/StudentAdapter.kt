@@ -30,6 +30,15 @@ class StudentAdapter(
 
         val studentData = mList[position]
 
+
+
+
+        val result = studentData.printMyNameToLog(50, 20.5)
+
+
+
+
+
         val nameTxt = row.findViewById<TextView>(R.id.nameTxt)
 
         val birthYearTxt = row.findViewById<TextView>(R.id.birthYearTxt)
