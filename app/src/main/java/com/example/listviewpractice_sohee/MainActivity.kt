@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
 
         studentListVIew.adapter = mAdapter
 
-
         studentListVIew.setOnItemClickListener { parent, view, position, id ->
 
             val clickedStudent = mStudentList[position]
