@@ -8,28 +8,13 @@ class Student(
     val name: String,
     val birthYear: Int) {
 
+//  2021년 나의 나이를 결과로 내보내주는 함수
 
-//    학생의 기늠? 예시
-//    자신의 이름을 로그로 찍는 기능
+    fun getMyAgeIn2021() : Int {
 
-    fun printMyNameToLog (num1: Int, num2: Double): Boolean {
+        val myAge = 2021 - this.birthYear + 1
 
-//        num1이 num2보다 크다면 로그를 이름만
-//        그렇지 안다면 이름과 인사도 로그 출력
-
-        if (num1 > num2) {
-
-            Log.d("연습용", this.name)
-            return false
-
-        } else {
-
-            Log.d("연습용", this.name)
-            Log.d("연습용", "잘 부탁드립니다.")
-
-        }
-
-        return true
-
+        return myAge
     }
+
 }
