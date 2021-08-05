@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.listviewpractice_sohee.adapters.StudentAdapter
 import com.example.listviewpractice_sohee.datas.Student
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.student_list_item.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,14 +30,6 @@ class MainActivity : AppCompatActivity() {
         mStudentList.add(Student("김도아", 2020))
         mStudentList.add(Student("전영주", 1997))
 
-        for (std in mStudentList) {
-            Log.d("학생 이름", std.name)
-        }
-
-
-        for ( i in 0 until 5) {
-            Log.d("숫자", i.toString())
-        }
 
         mAdapter = StudentAdapter(this, R.layout.student_list_item, mStudentList)
 
@@ -53,10 +47,15 @@ class MainActivity : AppCompatActivity() {
 
         studentListVIew.setOnItemLongClickListener { parent, view, position, id ->
 
-            mStudentList.removeAt(position)
+            val alert = AlertDialog.Builder(this)
 
-            mAdapter.notifyDataSetChanged()
-
+            alert.setTitle("삭제")
+                    .setMessage("삭제하시겠습니까?")
+                    .setPositiveButton("삭제") {dialog, which ->
+                        mStudentList.removeAt(position)
+                        mAdapter.notifyDataSetChanged()}
+                    .setNegativeButton("취소",null)
+                    .show()
 
             return@setOnItemLongClickListener true
         }
